@@ -1,4 +1,6 @@
-﻿namespace WatchFolder
+﻿using System.Drawing;
+
+namespace WatchFolder
 {
     internal class FolderWatcher
     {
@@ -32,24 +34,24 @@
             {
                 return;
             }
-            Console.WriteLine($"Changed: {e.FullPath}");
+            Console.WriteLine($"Changed: {e.FullPath}", Color.Yellow);
         }
 
         void OnCreated(object sender, FileSystemEventArgs e)
         {
-            Console.WriteLine($"Created: {e.FullPath}");
+            Console.WriteLine($"Created: {e.FullPath}", Color.Green);
         }
 
         void OnDeleted(object sender, FileSystemEventArgs e)
         {
-            Console.WriteLine($"Deleted: {e.FullPath}");
+            Console.WriteLine($"Deleted: {e.FullPath}", Color.Red);
         }
 
         void OnRenamed(object sender, RenamedEventArgs e)
         {
-            Console.WriteLine($"Renamed:");
-            Console.WriteLine($"    Old: {e.OldFullPath}");
-            Console.WriteLine($"    New: {e.FullPath} ");
+            Console.WriteLine($"Renamed:", Color.OrangeRed);
+            Console.WriteLine($"    Old: {e.OldFullPath}", Color.Gray);
+            Console.WriteLine($"    New: {e.FullPath}", Color.Gray);
         }
     }
 }
