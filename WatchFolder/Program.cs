@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"args:\n1.absulute folder path.\n2.filter(for example \"*.txt\")\n");
-            new FolderWatcher();
+            Console.WriteLine($"args:\n1.Absolute file path.\n2.Filter(example: \"*.txt\")\n");
+            new FolderWatcher(args);
             Console.ReadKey();
         }
     }

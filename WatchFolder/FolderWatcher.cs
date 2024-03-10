@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WatchFolder
+﻿namespace WatchFolder
 {
     internal class FolderWatcher
     {
-        public FolderWatcher(string path = "", string filter = "*.*")
+        public FolderWatcher(params string[] args)
         {
-            if (path == string.Empty)
+            string path = args[0] ?? "";
+            string filter = args[1] ?? "*.*";
+
+            if (path == string.Empty || path == null)
             {
                 path = System.IO.Directory.GetCurrentDirectory();
             }
