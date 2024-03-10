@@ -1,15 +1,13 @@
-﻿using System.Drawing;
-
-namespace WatchFolder
+﻿namespace WatchFolder
 {
     internal class FolderWatcher
     {
         public FolderWatcher(params string[] args)
         {
-            string path = args[0] ?? "";
-            string filter = args[1] ?? "*.*";
+            string path = args.Length > 0 ? args[0] : "";
+            string filter = args.Length > 1 ? args[1] : "*.*";
 
-            if (path == string.Empty || path == null)
+            if (path == string.Empty)
             {
                 path = System.IO.Directory.GetCurrentDirectory();
             }
@@ -34,24 +32,24 @@ namespace WatchFolder
             {
                 return;
             }
-            Console.WriteLine($"Changed: {e.FullPath}", Color.Yellow);
+            Console.WriteLine($"Changed: {e.FullPath}");
         }
 
         void OnCreated(object sender, FileSystemEventArgs e)
         {
-            Console.WriteLine($"Created: {e.FullPath}", Color.Green);
+            Console.WriteLine($"Created: {e.FullPath}");
         }
 
         void OnDeleted(object sender, FileSystemEventArgs e)
         {
-            Console.WriteLine($"Deleted: {e.FullPath}", Color.Red);
+            Console.WriteLine($"Deleted: {e.FullPath}");
         }
 
         void OnRenamed(object sender, RenamedEventArgs e)
         {
-            Console.WriteLine($"Renamed:", Color.OrangeRed);
-            Console.WriteLine($"    Old: {e.OldFullPath}", Color.Gray);
-            Console.WriteLine($"    New: {e.FullPath}", Color.Gray);
+            Console.WriteLine($"Renamed:");
+            Console.WriteLine($"    Old: {e.OldFullPath}");
+            Console.WriteLine($"    New: {e.FullPath}");
         }
     }
 }
